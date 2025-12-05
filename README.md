@@ -13,14 +13,17 @@ Tugas ini menggunakan Python3. Pastikan telah menginstall library berikut:
 * numpy
 * matplotlib
 * scikit-learn
-* imbalanced-learn (untuk SMOTE)
+* imbalanced-learn
+* cvxopt
+* jupyter
+* ipykernel
 
 ```bash
-pip install pandas numpy matplotlib scikit-learn imbalanced-learn
+pip install pandas numpy matplotlib scikit-learn imbalanced-learn cvxopt ipykernel jupyter
 ```
 
 ## Cara Menjalankan
-### Cara 1
+### Cara 1 (Direkomendasikan)
 1. Jalankan pada Google Colab dengan link notebook berikut (make a copy dan pastikan dataset sudah di upload): https://colab.research.google.com/drive/1AnWVb8H_OFPmaRxuefh7ow-Tg2q3tSrf?usp=sharing
 
 ### Cara 2
@@ -32,8 +35,9 @@ git clone https://github.com/iqbalhaidr/Tubes_AI_2.git
 ```bash
 cd path/to/repository/src/
 ```
-3. Buka file .ipynb
-4. Jalankan semua (Run All)
+3. Instalasi library persyaratan awal (direkomendasikan dengan venv)
+4. Buka file .ipynb, pilih kernel venv Python Environment
+5. Jalankan semua (Run All). Pilih kernel 
 
 ## Kelompok 16 - LimaSerangkAI
 |   NIM    |                  Nama                  |
