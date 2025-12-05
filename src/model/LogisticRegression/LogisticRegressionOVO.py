@@ -3,20 +3,31 @@ import pickle
 from model.LogisticRegression.StochasticGradientDescent import StochasticGradientDescent
 
 class LogisticRegressionOVO:
-    def __init__(self, lr = 0.1, epochs = 10):
+    def __init__(self, lr = 0.1, epochs = 10, batch_size=32):
         self.lr = lr
         self.epochs = epochs
+        self.batch_size = batch_size
         self.models = None
         self.n_classes = None
         self.label_to_idx = None
         self.idx_to_label = None
-    
-    def fit(self, X, y):
-        X = X.values
-        y = y.values
 
+    def get_params(self, deep=True):
+        params = {
+            'lr': self.lr,
+            'epochs': self.epochs,
+            'batch_size': self.batch_size
+        }
+        return params
+
+    def set_params(self, **params):
+        for key, value in params.items():
+            setattr(self, key, value)
+        return self
+
+    def fit(self, X, y):
         unique_classes = np.unique(y)
-        
+
         self.n_classes = len(unique_classes)
         self.label_to_idx = {label: idx for idx, label in enumerate(unique_classes)}
         self.idx_to_label = {idx: label for label, idx in self.label_to_idx.items()}
@@ -30,33 +41,32 @@ class LogisticRegressionOVO:
                     mask = (y_numeric == i) | (y_numeric == j)
                     X_pair = X[mask]
                     y_pair = y_numeric[mask]
-                    
+
                     y_binary = (y_pair == i).astype(int)
 
-                    model = StochasticGradientDescent(lr=self.lr, epochs=self.epochs)
+                    model = StochasticGradientDescent(lr=self.lr, epochs=self.epochs, batch_size=self.batch_size)
                     model.fit(X_pair, y_binary)
 
-                    self.models[(i,j)] = model        
+                    self.models[(i,j)] = model
         else :
-            self.models = StochasticGradientDescent(lr=self.lr, epochs=self.epochs)
+            self.models = StochasticGradientDescent(lr=self.lr, epochs=self.epochs, batch_size=self.batch_size)
             self.models.fit(X, y_numeric)
 
     def predict(self, X):
-        X = X.values
         if isinstance(self.models, dict):
             n_samples = X.shape[0]
             votes = np.zeros((n_samples, self.n_classes))
 
             for (i, j), model in self.models.items():
-                predictions = model.predict_proba(X)
+                predictions = model.predict(X)
 
                 for idx in range(n_samples):
                     if predictions[idx] == 1:
                         votes[idx,i] += 1
-                    else : 
+                    else :
                         votes[idx, j] += 1
-            
-            best_indices = np.argmax(votes, axis=1)   
+
+            best_indices = np.argmax(votes, axis=1)
             y_pred = np.array([self.idx_to_label[idx] for idx in best_indices])
 
             return y_pred
@@ -76,23 +86,23 @@ class LogisticRegressionOVO:
             'lr': self.lr,
             'epochs': self.epochs
         }
-        
+
         with open(filepath, 'wb') as f:
             pickle.dump(model_data, f)
-        
+
         print(f"Model berhasil disimpan ke {filepath}")
-    
+
     def load_model(self, filepath):
         with open(filepath, 'rb') as f:
             model_data = pickle.load(f)
-        
+
         self.models = model_data['models']
         self.n_classes = model_data['n_classes']
         self.label_to_idx = model_data['label_to_idx']
         self.idx_to_label = model_data['idx_to_label']
         self.lr = model_data['lr']
         self.epochs = model_data['epochs']
-        
+
         print(f"Model berhasil di-load dari {filepath}")
         print(f"Jumlah kelas: {self.n_classes}")
         print(f"Jumlah model: {len(self.models)}")
