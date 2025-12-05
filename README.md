@@ -4,7 +4,7 @@ Tugas ini mengimplementasikan algoritma pembelajaran mesin (**Decision Tree Lear
 
 ## Algoritma yang Diimplementasikan:
 1.  **Decision Tree Learning (ID3/C4.5)**: Menggunakan *Information Gain* / *Gain Ratio*, menangani data kontinu & kategorikal, serta fitur *Post-Pruning*.
-2.  **Logistic Regression**: Menggunakan optimasi *Stochastic Gradient Descent* (SGD) dan strategi *One-vs-One* untuk klasifikasi multiclass.
+2.  **Logistic Regression**: Menggunakan optimasi *Mini-batch Gradient Descent* (SGD) dan strategi *One-vs-One* untuk klasifikasi multiclass.
 3.  **Support Vector Machine (SVM)**: Menggunakan algoritma *Sequential Minimal Optimization* (SMO), Kernel RBF, dan strategi *One-vs-One*.
 
 ## Persyaratan Awal

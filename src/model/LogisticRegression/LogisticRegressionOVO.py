@@ -1,6 +1,6 @@
 import numpy as np
 import pickle
-from model.LogisticRegression.StochasticGradientDescent import StochasticGradientDescent
+from model.LogisticRegression.MinibatchGradientDescent import MinibatchGradientDescent
 
 class LogisticRegressionOVO:
     def __init__(self, lr = 0.1, epochs = 10, batch_size=32):
@@ -44,12 +44,12 @@ class LogisticRegressionOVO:
 
                     y_binary = (y_pair == i).astype(int)
 
-                    model = StochasticGradientDescent(lr=self.lr, epochs=self.epochs, batch_size=self.batch_size)
+                    model = MinibatchGradientDescent(lr=self.lr, epochs=self.epochs, batch_size=self.batch_size)
                     model.fit(X_pair, y_binary)
 
                     self.models[(i,j)] = model
         else :
-            self.models = StochasticGradientDescent(lr=self.lr, epochs=self.epochs, batch_size=self.batch_size)
+            self.models = MinibatchGradientDescent(lr=self.lr, epochs=self.epochs, batch_size=self.batch_size)
             self.models.fit(X, y_numeric)
 
     def predict(self, X):

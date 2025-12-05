@@ -1,6 +1,6 @@
 import numpy as np
 
-class StochasticGradientDescent:
+class MinibatchGradientDescent:
     def __init__(self, lr=0.1, epochs=10, batch_size=32):
         self.lr = lr
         self.epochs = epochs
