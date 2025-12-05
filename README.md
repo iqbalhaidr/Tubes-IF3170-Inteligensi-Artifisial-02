@@ -3,7 +3,7 @@
 Tugas ini mengimplementasikan algoritma pembelajaran mesin (**Decision Tree Learning, Logistic Regression, dan Support Vector Machine**) yang dibangun dari awal (*from scratch*) dan dibandingkan dengan implementasi pustaka `scikit-learn`. Proyek ini dikerjakan untuk memenuhi Tugas Besar 2 mata kuliah IF3170 Inteligensi Artifisial.
 
 ## Algoritma yang Diimplementasikan:
-1.  **Decision Tree Learning (ID3/C4.5)**: Menggunakan *Information Gain* / *Gain Ratio*, menangani data kontinu & kategorikal, serta fitur *Post-Pruning*.
+1.  **Decision Tree Learning (C4.5)**: Menggunakan *Gain Ratio* (*Information Gain*/ *Split Information*) untuk pemilihan *feature*, menangani data kontinu & kategorikal, serta fitur *Post-Pruning*.
 2.  **Logistic Regression**: Menggunakan optimasi *Mini-batch Gradient Descent* dan strategi *One-vs-One* untuk klasifikasi multiclass.
 3.  **Support Vector Machine (SVM)**: Menggunakan algoritma *Sequential Minimal Optimization* (SMO), Kernel RBF, dan strategi *One-vs-One*.
 
