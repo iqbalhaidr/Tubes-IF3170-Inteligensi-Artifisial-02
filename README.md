@@ -40,10 +40,10 @@ cd path/to/repository/src/
 5. Jalankan semua (Run All). Pilih kernel 
 
 ## Kelompok 16 - LimaSerangkAI
-|   NIM    |                  Nama                  |
-| :------: | :------------------------------------: |
-| 13523023 |           Muhammad Aufa Farabi         |
-| 13523025 |       Joel Hotlan Haris Siahaan        |
-| 13523030 |              Julius Arthur             |
-| 13523051 |      Ferdinand Gabe Tua Sinaga         |
-| 13523111 |         Muhammad Iqbal Haidar          |
+|   NIM    |                  Nama                  | Pembagian Tugas                    |
+| :------: | :------------------------------------: | :--------------------------------: |
+| 13523023 |           Muhammad Aufa Farabi         | Implementasi Decision Tree Learning|
+| 13523025 |       Joel Hotlan Haris Siahaan        | Implementasi Logistic Regression   |
+| 13523030 |              Julius Arthur             | Data cleaning dan preprocessing    |
+| 13523051 |      Ferdinand Gabe Tua Sinaga         | Implementasi SVM                   |
+| 13523111 |         Muhammad Iqbal Haidar          | Laporan                            |
